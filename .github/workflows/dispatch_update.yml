@@ -1,0 +1,14 @@
+name: Dispatch Update Submodule
+on:
+  push:
+    branches:
+      - main
+jobs:
+  dispatch:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dispatch update to Git Blog Project
+        uses: peter-evans/repository-dispatch@v3
+        with:
+          repository: Codeminister2137/tsk
+          event-type: update-submodule
