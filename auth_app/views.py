@@ -12,3 +12,10 @@ class RegisterView(APIView):
             serializer.save()
             return Response({"message": "User registered successfully"}, status=status.HTTP_201_CREATED)
         return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+class CheckLoginView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        # Jeśli użytkownik jest zalogowany, zwróci status 200
+        return Response({"message": "User is authenticated"}, status=status.HTTP_200_OK)
