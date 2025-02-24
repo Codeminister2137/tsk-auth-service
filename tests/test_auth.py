@@ -1,6 +1,7 @@
 import pytest
 from rest_framework import status
 from rest_framework.test import APIClient
+from rest_framework_simplejwt.tokens import RefreshToken
 from django.contrib.auth import get_user_model
 
 User = get_user_model()
@@ -102,8 +103,11 @@ def test_change_password():
     # Tworzymy użytkownika
     user = User.objects.create_user(username="testuser", password="oldpassword123")
 
+    refresh = RefreshToken.for_user(user)
+    access_token = str(refresh.access_token)
+
     client = APIClient()
-    client.login(username='testuser', password='oldpassword123')
+    client.credentials(HTTP_AUTHORIZATION=f'Bearer {access_token}')
 
     # Nowe hasło
     data = {

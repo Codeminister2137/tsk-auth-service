@@ -17,8 +17,15 @@ Including another URLconf
 
 from django.contrib import admin
 from django.urls import path, include
+from auth_app.views import ProfileView, SpecialResourceView
+from rest_framework.routers import DefaultRouter
+
+router = DefaultRouter()
+router.register('profile', ProfileView)
 
 urlpatterns = [
+    path("", include(router.urls)),
     path("admin/", admin.site.urls),
-    path('auth/', include('auth_app.urls')),  # Auth endpoints
+    path('auth/', include('auth_app.urls')),
+    path('special-resource/', SpecialResourceView.as_view())# Auth endpoints
 ]
