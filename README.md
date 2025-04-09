@@ -3,6 +3,8 @@
 ## Description
 TSK-auth-service is a microservice that provides calendar authorization and authenthication functionalities as part of a larger Task Scheduler project. It handles user login, registration and permissions efficiently.
 
+**Whole TSK project: https://github.com/Codeminister2137/tsk**
+
 ## Installation Instructions
 ### For Developers
 1. **Clone the Repository**:
