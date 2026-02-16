@@ -1,0 +1,29 @@
+[tool.poetry]
+name = "tsk-auth-service"
+version = "0.1.0"
+description = ""
+authors = ["Paweł <kalicki.paul@icloud.com>"]
+readme = "README.md"
+packages = [{include = "tsk_auth_service"}]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+django = "^5.1.5"
+djangorestframework = "^3.15.2"
+djangorestframework-simplejwt = "^5.4.0"
+django-environ = "^0.12.0"
+pre-commit = "^4.2.0"
+
+
+[tool.poetry.group.dev.dependencies]
+pytest = "^8.3.4"
+pytest-django = "^4.9.0"
+faker = "^35.0.0"
+
+[tool.pytest.ini_options]
+DJANGO_SETTINGS_MODULE = "tsk_auth_service.settings"
+python_files = "tests.py test_*.py *_tests.py"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
